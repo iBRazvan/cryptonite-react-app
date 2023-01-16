@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import millify from "millify";
 import { Collapse, Row, Col, Typography, Avatar } from "antd";
-import HTMLReactParser from "html-react-parser";
 
 import { useGetCryptoExchangesQuery } from "../services/cryptoExchangesApi";
 
@@ -23,10 +22,16 @@ const Exchanges = () => {
 
   return (
     <>
-      <Row>
-        <Col span={7}>Exchanges</Col>
-        <Col span={8}>24h Trade Volume</Col>
-        <Col span={6}>Year Established</Col>
+      <Row className="exchange-header">
+        <Col className="text-format-exchanges" span={7}>
+          Exchanges
+        </Col>
+        <Col className="text-format-exchanges" span={8}>
+          24h Trade Volume
+        </Col>
+        <Col className="text-format-exchanges" span={6}>
+          Year Established
+        </Col>
       </Row>
       <Row>
         {exchangesData?.map((exchange) => (
