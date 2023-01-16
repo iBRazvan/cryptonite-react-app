@@ -29,7 +29,7 @@ const Exchanges = () => {
         <Col span={6}>Year Established</Col>
       </Row>
       <Row>
-        {exchangesData.map((exchange) => (
+        {exchangesData?.map((exchange) => (
           <Col key={exchange.id} span={24}>
             <Collapse>
               <Panel
