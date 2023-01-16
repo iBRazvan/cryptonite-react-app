@@ -34,6 +34,7 @@ const Cryptodetails = () => {
     timePeriod,
   });
   const cryptoDetails = data?.data?.coin;
+  console.log("cryptoDetails", cryptoDetails);
 
   if (isFetching) return <Loader />;
 
@@ -48,7 +49,9 @@ const Cryptodetails = () => {
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`,
+      value: `$ ${
+        cryptoDetails["24hVolume"] && millify(cryptoDetails["24hVolume"])
+      }`,
       icon: <ThunderboltOutlined />,
     },
     {
@@ -140,7 +143,7 @@ const Cryptodetails = () => {
             <p>An overview showing the statistics of {cryptoDetails.name}</p>
           </Col>
           {stats.map(({ icon, title, value }) => (
-            <Col className="coin-stats">
+            <Col key={title} className="coin-stats">
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -156,7 +159,7 @@ const Cryptodetails = () => {
             </Title>
           </Col>
           {genericStats.map(({ icon, title, value }) => (
-            <Col className="coin-stats">
+            <Col key={title} className="coin-stats">
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
